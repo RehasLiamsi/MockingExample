@@ -44,26 +44,17 @@ public class StringCalculatorTest {
     }
 
     @DisplayName("Add method can handle line breaks between numbers")
-    @ParameterizedTest(name = "{index} ==> {0} added together is {1}")
-    @CsvSource({
-            "'1\n1', 2",
-            "'9\n8,7', 24",
-            "'1,2\n3,4',10"
-    })
-    void addHandlesLineBreaksBetweenNumbers(String numbers, int expected) {
-        int result = StringCalculator.Add(numbers);
-        assertEquals(expected, result);
+    @Test
+    void addHandlesLineBreaksBetweenNumbers() {
+        int result = StringCalculator.Add("9\n8,7");
+        assertEquals(24, result);
     }
+
     @DisplayName("Add method can handle custom delimiters input between // and line break")
-    @ParameterizedTest(name = "{index} ==> {0} added together is {1}")
-    @CsvSource({
-            "'1,1', 2",
-            "'9\n8,7', 24",
-            "'//;\n1;2', 3"
-    })
-    void addHandlesCustomDelimitersBetweenNumbers(String numbers, int expected) {
-        int result = StringCalculator.Add(numbers);
-        assertEquals(expected, result);
+    @Test
+    void addHandlesCustomDelimitersBetweenNumbers() {
+        int result = StringCalculator.Add("//;\n1;2");
+        assertEquals(3, result);
 
 }
 
@@ -74,6 +65,13 @@ public class StringCalculatorTest {
                .isInstanceOf(IllegalArgumentException.class)
                .hasMessageContaining("Negatives not allowed: [-9]");
 
+    }
+
+    @DisplayName("Add method ignores numbers greater than 1000")
+    @Test
+    void addIgnoresNumbersGreaterThan1000(){
+        int result = StringCalculator.Add("2,1001");
+        assertEquals(2,result);
     }
 
 }

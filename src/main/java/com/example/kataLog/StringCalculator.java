@@ -40,7 +40,7 @@ public class StringCalculator {
 
     private IntStream getIntStream() {
         return Arrays.stream(numbers.split(delimiter))
-                .mapToInt(Integer::parseInt);
+                .mapToInt(Integer::parseInt).filter(n -> n <= 1000);
     }
 
     private static StringCalculator parseInput(String inputNumber) {
