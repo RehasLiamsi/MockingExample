@@ -46,4 +46,16 @@ public class StringCalculatorTest {
         int result = StringCalculator.Add(numbers);
         assertEquals(expected, result);
     }
+    @DisplayName("Add method can handle custom delimiters input between // and line break")
+    @ParameterizedTest(name = "{index} ==> {0} added together is {1}")
+    @CsvSource({
+            "'1,1', 2",
+            "'9\n8,7', 24",
+            "'//;\n1;2', 3"
+    })
+    void addHandlesCustomDelimitersBetweenNumbers(String numbers, int expected) {
+        int result = StringCalculator.Add(numbers);
+        assertEquals(expected, result);
+
+}
 }
