@@ -1,33 +1,47 @@
 package com.example;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
 
+    private Employee employee;
+
+    @BeforeEach
+    public void setUp() {
+        this.employee = new Employee("Saher01",50000);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        this.employee = null;
+    }
+
     @Test
     void getIdMethodReturnsEmployeeId() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
 
         var employeeId = employee.getId();
 
-        assertEquals("1", employeeId);
+        assertEquals("Saher01", employeeId);
     }
 
     @Test
     void setIdSetsUpdatedEmployeeId() {
-        Employee employee = new Employee("1",50000);
-        employee.setId("2");
+        //Employee employee = new Employee("1",50000);
+        employee.setId("Ismail01");
 
         var employeeId = employee.getId();
 
-        assertEquals("2", employeeId);
+        assertEquals("Ismail01", employeeId);
     }
 
     @Test
     void getSalaryReturnsEmployeesSalary() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
 
         var employeeSalary = employee.getSalary();
 
@@ -36,7 +50,7 @@ class EmployeeTest {
 
     @Test
     void setSalarySetsUpdatedEmployeeSalary() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
         employee.setSalary(25000);
 
         var employeeSalary = employee.getSalary();
@@ -46,7 +60,7 @@ class EmployeeTest {
 
     @Test
     void isPaidReturnsTrueWhenSalaryPaidSetToTrue() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
         employee.setPaid(true);
 
         var salaryPaid = employee.isPaid();
@@ -56,7 +70,7 @@ class EmployeeTest {
 
     @Test
     void isPaidReturnsFalseWhenSalaryPaidSetToFalse() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
         employee.setPaid(false);
 
         var salaryPaid = employee.isPaid();
@@ -66,7 +80,7 @@ class EmployeeTest {
 
     @Test
     void setPaidSetsTheSalaryToTrue() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
         employee.setPaid(true);
 
         var isSalaryPaid = employee.isPaid();
@@ -76,7 +90,7 @@ class EmployeeTest {
 
     @Test
     void setPaidSetsTheSalaryToFalse() {
-        Employee employee = new Employee("1",50000);
+        //Employee employee = new Employee("1",50000);
         employee.setPaid(false);
 
         var isSalaryPaid = employee.isPaid();
@@ -86,10 +100,10 @@ class EmployeeTest {
 
     @Test
     void testToString() {
-        Employee newEmployee = new Employee("abc", 35000);
+        //Employee newEmployee = new Employee("abc", 35000);
 
-        var expected = "Employee [id=" + newEmployee.getId() + ", salary=" + newEmployee.getSalary() + "]";
+        var expected = "Employee [id=" + employee.getId() + ", salary=" + employee.getSalary() + "]";
 
-        assertEquals(expected, newEmployee.toString());
+        assertEquals(expected, employee.toString());
     }
 }
