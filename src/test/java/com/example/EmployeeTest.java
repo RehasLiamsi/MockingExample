@@ -22,86 +22,58 @@ class EmployeeTest {
 
     @Test
     void getIdMethodReturnsEmployeeId() {
-        //Employee employee = new Employee("1",50000);
-
-        var employeeId = employee.getId();
-
-        assertEquals("Saher01", employeeId);
+        assertEquals("Saher01", employee.getId());
     }
 
     @Test
     void setIdSetsUpdatedEmployeeId() {
-        //Employee employee = new Employee("1",50000);
         employee.setId("Ismail01");
 
-        var employeeId = employee.getId();
-
-        assertEquals("Ismail01", employeeId);
+        assertEquals("Ismail01", employee.getId());
     }
 
     @Test
     void getSalaryReturnsEmployeesSalary() {
-        //Employee employee = new Employee("1",50000);
-
-        var employeeSalary = employee.getSalary();
-
-        assertEquals(50000, employeeSalary);
+        assertEquals(50000, employee.getSalary());
     }
 
     @Test
     void setSalarySetsUpdatedEmployeeSalary() {
-        //Employee employee = new Employee("1",50000);
         employee.setSalary(25000);
 
-        var employeeSalary = employee.getSalary();
-
-        assertEquals(25000, employeeSalary);
+        assertEquals(25000, employee.getSalary());
     }
 
     @Test
     void isPaidReturnsTrueWhenSalaryPaidSetToTrue() {
-        //Employee employee = new Employee("1",50000);
         employee.setPaid(true);
 
-        var salaryPaid = employee.isPaid();
-
-        assertTrue(salaryPaid);
+        assertTrue(employee.isPaid());
     }
 
     @Test
     void isPaidReturnsFalseWhenSalaryPaidSetToFalse() {
-        //Employee employee = new Employee("1",50000);
         employee.setPaid(false);
 
-        var salaryPaid = employee.isPaid();
-
-        assertFalse(salaryPaid);
+        assertFalse(employee.isPaid());
     }
 
     @Test
     void setPaidSetsTheSalaryToTrue() {
-        //Employee employee = new Employee("1",50000);
         employee.setPaid(true);
 
-        var isSalaryPaid = employee.isPaid();
-
-        assertTrue(isSalaryPaid);
+        assertTrue(employee.isPaid());
     }
 
     @Test
     void setPaidSetsTheSalaryToFalse() {
-        //Employee employee = new Employee("1",50000);
         employee.setPaid(false);
 
-        var isSalaryPaid = employee.isPaid();
-
-        assertFalse(isSalaryPaid);
+        assertFalse(employee.isPaid());
     }
 
     @Test
     void testToString() {
-        //Employee newEmployee = new Employee("abc", 35000);
-
         var expected = "Employee [id=" + employee.getId() + ", salary=" + employee.getSalary() + "]";
 
         assertEquals(expected, employee.toString());
