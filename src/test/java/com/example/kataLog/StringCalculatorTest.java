@@ -5,9 +5,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringCalculatorTest {
+
+    @DisplayName("Empty string returns 0")
+    @Test
+    void addReturnsZeroWhenEmptyStringIsEntered(){
+        int result = StringCalculator.Add("");
+        assertEquals(0, result);
+    }
 
     @DisplayName("Add method adds two numbers")
     @ParameterizedTest(name = "{index} ==> {0} added together is {1}")
@@ -58,4 +66,14 @@ public class StringCalculatorTest {
         assertEquals(expected, result);
 
 }
+
+    @DisplayName("Add method throws exception if negative number is entered")
+    @Test
+    void addThrowsExceptionWhenNegativeValueEntered() {
+       assertThatThrownBy(() -> StringCalculator.Add("-9,3"))
+               .isInstanceOf(IllegalArgumentException.class)
+               .hasMessageContaining("Negatives not allowed: [-9]");
+
+    }
+
 }
