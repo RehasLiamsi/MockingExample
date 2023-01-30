@@ -7,7 +7,7 @@ public class StringCalculator {
         if (numbers.isEmpty())
             return 0;
         else {
-           int sum = Arrays.stream(numbers.split(","))
+           int sum = Arrays.stream(numbers.split("[,\n]"))
                    .mapToInt(Integer::parseInt)
                    .sum();
            return sum;

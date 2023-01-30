@@ -34,4 +34,16 @@ public class StringCalculatorTest {
         int result = StringCalculator.Add(numbers);
         assertEquals(expected, result);
     }
+
+    @DisplayName("Add method can handle line breaks between numbers")
+    @ParameterizedTest(name = "{index} ==> {0} added together is {1}")
+    @CsvSource({
+            "'1\n1', 2",
+            "'9\n8,7', 24",
+            "'1,2\n3,4',10"
+    })
+    void addHandlesLineBreaksBetweenNumbers(String numbers, int expected) {
+        int result = StringCalculator.Add(numbers);
+        assertEquals(expected, result);
+    }
 }
