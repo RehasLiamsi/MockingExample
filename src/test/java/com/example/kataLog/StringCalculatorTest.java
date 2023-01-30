@@ -21,4 +21,17 @@ public class StringCalculatorTest {
         int result = StringCalculator.Add(numbers);
         assertEquals(expected, result);
     }
+
+    @DisplayName("Add method adds unlimited numbers")
+    @ParameterizedTest(name = "{index} ==> {0} added together is {1}")
+    @CsvSource({
+            "1,1",
+            "'1,1', 2",
+            "'9,8,7', 24",
+            "'1,2,3,4',10"
+    })
+    void addReturnsTheSumOfUnlimitedNumbersSent(String numbers, int expected) {
+        int result = StringCalculator.Add(numbers);
+        assertEquals(expected, result);
+    }
 }
