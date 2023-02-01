@@ -87,4 +87,11 @@ public class StringCalculatorTest {
         int result = StringCalculator.Add("//[*][%]\n1*2%3");
         assertEquals(6, result);
     }
+
+    @DisplayName("Multiple delimiters with any length are accepted")
+    @Test
+    void addAcceptsMultipleDelimitersWithLengthLongerThanOneChar() {
+        int result = StringCalculator.Add("//[...][,,,]\n1...2,,,3");
+        assertEquals(6, result);
+    }
 }
