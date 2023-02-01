@@ -81,4 +81,10 @@ public class StringCalculatorTest {
         assertEquals(6,result);
     }
 
+    @DisplayName("Multiple delimiters are accepted")
+    @Test
+    void addAcceptsMultipleDelimiters() {
+        int result = StringCalculator.Add("//[*][%]\n1*2%3");
+        assertEquals(6, result);
+    }
 }

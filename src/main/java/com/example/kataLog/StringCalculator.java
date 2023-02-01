@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StringCalculator {
 
@@ -50,7 +51,7 @@ public class StringCalculator {
             String[] parts = inputNumber.split("\n",2);
             return new StringCalculator(parseDelimiter(parts),parts[1]);
         } else {
-            return new StringCalculator("[,\n]", inputNumber);
+            return new StringCalculator("[,|\n]", inputNumber);
         }
     }
 
@@ -58,6 +59,9 @@ public class StringCalculator {
         String delimiter = parts[0].substring(2);
         if(delimiter.startsWith("[")) {
             delimiter = delimiter.substring(1, delimiter.length()-1);
+           return Stream.of(delimiter.split("]\\["))
+                   .map(Pattern::quote)
+                   .collect(Collectors.joining("|"));
         }
         return Pattern.quote(delimiter);
     }
