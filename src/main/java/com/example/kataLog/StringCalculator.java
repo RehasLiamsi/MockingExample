@@ -1,6 +1,7 @@
 package com.example.kataLog;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -47,9 +48,17 @@ public class StringCalculator {
         StringCalculator calculator;
         if (inputNumber.startsWith("//")) {
             String[] parts = inputNumber.split("\n",2);
-            return new StringCalculator(parts[0].substring(2),parts[1]);
+            return new StringCalculator(parseDelimiter(parts),parts[1]);
         } else {
             return new StringCalculator("[,\n]", inputNumber);
         }
+    }
+
+    private static String parseDelimiter(String[] parts) {
+        String delimiter = parts[0].substring(2);
+        if(delimiter.startsWith("[")) {
+            delimiter = delimiter.substring(1, delimiter.length()-1);
+        }
+        return Pattern.quote(delimiter);
     }
 }

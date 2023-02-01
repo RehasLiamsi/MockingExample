@@ -74,4 +74,11 @@ public class StringCalculatorTest {
         assertEquals(2,result);
     }
 
+    @DisplayName("Delimiters of any length are accepted")
+    @Test
+    void addAcceptsDelimitersOfAnyLength() {
+        int result = StringCalculator.Add("//[***]\n1***2***3");
+        assertEquals(6,result);
+    }
+
 }
