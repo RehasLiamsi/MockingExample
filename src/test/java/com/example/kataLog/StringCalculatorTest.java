@@ -12,7 +12,7 @@ public class StringCalculatorTest {
 
     @DisplayName("Empty string returns 0")
     @Test
-    void addReturnsZeroWhenEmptyStringIsEntered(){
+    void addReturnsZeroWhenEmptyStringIsEntered() {
         int result = StringCalculator.Add("");
         assertEquals(0, result);
     }
@@ -56,29 +56,29 @@ public class StringCalculatorTest {
         int result = StringCalculator.Add("//;\n1;2");
         assertEquals(3, result);
 
-}
+    }
 
     @DisplayName("Add method throws exception if negative number is entered")
     @Test
     void addThrowsExceptionWhenNegativeValueEntered() {
-       assertThatThrownBy(() -> StringCalculator.Add("-9,3"))
-               .isInstanceOf(IllegalArgumentException.class)
-               .hasMessageContaining("Negatives not allowed: [-9]");
+        assertThatThrownBy(() -> StringCalculator.Add("-9,3"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Negatives not allowed: [-9]");
 
     }
 
     @DisplayName("Add method ignores numbers greater than 1000")
     @Test
-    void addIgnoresNumbersGreaterThan1000(){
+    void addIgnoresNumbersGreaterThan1000() {
         int result = StringCalculator.Add("2,1001");
-        assertEquals(2,result);
+        assertEquals(2, result);
     }
 
     @DisplayName("Delimiters of any length are accepted")
     @Test
     void addAcceptsDelimitersOfAnyLength() {
         int result = StringCalculator.Add("//[***]\n1***2***3");
-        assertEquals(6,result);
+        assertEquals(6, result);
     }
 
     @DisplayName("Multiple delimiters are accepted")
